@@ -3,11 +3,11 @@ const Prestamo = require('../models/prestamo.model')
 const retrieve = async (request, response) => {
   
   // Find all users
-  const prestamo = await Prestamo.findAll();
-  console.log(prestamo.every(user => user instanceof User)); // true
-  console.log('All users:', JSON.stringify(prestamo, null, 2));
+  const prestamos = await Prestamo.findAll();
+  console.log(prestamos.every(prestamo => prestamo instanceof Prestamo)); // true
+  console.log('All prestamos:', JSON.stringify(prestamos, null, 2));
 
-  response.json(prestamo);
+  response.json(prestamos);
 };
 
 const retrieveById = async (request, response) => {

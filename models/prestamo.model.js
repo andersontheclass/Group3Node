@@ -1,7 +1,6 @@
 const getConnection = require('../databases/db-config');
 
-const { Sequelize, DataTypes } = require('sequelize');
-const Usuario = require('./usuario.model');
+const { Sequelize, DataTypes } = require('sequelize')
 const sequelize = getConnection();
 
 const Prestamo = sequelize.define('prestamo',
@@ -18,14 +17,18 @@ const Prestamo = sequelize.define('prestamo',
       type: DataTypes.INTEGER
     },
     fecha_prestamo: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Set default value to current date and time
+      allowNull: false // Ensure it cannot be null
     },
     fecha_devolucion: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: true
     }
   },
   {
-    tableName: "prestamo"
+    tableName: 'prestamo', // Specify the table name explicitly
+    timestamps: true // Adds createdAt and updatedAt fields
   }
 )
 
