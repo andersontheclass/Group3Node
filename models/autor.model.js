@@ -21,7 +21,7 @@ const Autor = sequelize.define('autor',
     }
   },
   {
-    tableName: "autor",
+    tableName: 'autor',
   }
 );
 

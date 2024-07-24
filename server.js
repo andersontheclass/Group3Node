@@ -2,7 +2,7 @@ const express = require("express");
 const path = require('path');
 const expressHandlebars = require('express-handlebars');
 
-const userRouter = require("./routes/usuario.route");
+const usuarioRouter = require("./routes/usuario.route");
 const libroRouter = require("./routes/libro.route");
 const prestamoRouter = require("./routes/prestamo.route");
 const autorRouter = require("./routes/autor.route");
@@ -21,11 +21,11 @@ class Server {
     this.viewEngineConfiguration();
 
     // definir endPoint
-    this.usuarioEndPoint = "/api/usuario";
-    this.libroEndPoint = "/api/libro";
-    this.prestamoEndPoint = "/api/prestamo";
-    this.autorEndPoint = "/api/autor";
-    //testConnection(); it comes from ./databases/db-config to test the connection
+    this.usuarioEndPoint = "/usuario";
+    this.libroEndPoint = "/libro";
+    this.prestamoEndPoint = "/prestamo";
+    this.autorEndPoint = "/autor";
+    testConnection(); // it comes from ./databases/db-config to test the connection
 
     this.routes();
   }
@@ -46,19 +46,12 @@ class Server {
 
   routes() {
     //this.app.use('/', express.static('public'));
-    this.app.use(this.usuarioEndPoint, userRouter);
+    this.app.use(this.usuarioEndPoint, usuarioRouter);
     this.app.use(this.libroEndPoint, libroRouter);
     this.app.use(this.prestamoEndPoint, prestamoRouter);
     this.app.use(this.autorEndPoint, autorRouter);
     
-    this.app.get('/', (req, res) => {
-      res.render('index')
-    });
-    this.app.get('/registrar-libro', (req, res) => {
-      res.sendFile(`${__dirname}/public/registrar.libro.html`);
-    });
-
-
+    
   }
   run() {
     this.app.listen(this.port, () =>
