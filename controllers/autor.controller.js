@@ -17,7 +17,7 @@ const retrieve = async (request, response) => {
 
   console.log(_autores);
 
-  response.json('autor/autor-retrieve', { autores: _autores});
+  response.render('autor/autor-retrieve', { autores: _autores});
 };
 
 const retrieveById = async (req = request, response) => {

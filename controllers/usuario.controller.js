@@ -3,8 +3,8 @@ const Usuario = require('../models/usuario.model');
 const retrieve = async (request, response) => {
 
   // Find all users
-  const users = await User.findAll();
-  console.log(users.every(user => user instanceof User)); // true
+  const users = await Usuario.findAll();
+  console.log(users.every(user => user instanceof Usuario)); // true
   console.log('All users:', JSON.stringify(users, null, 2));
 
   const _users = users.map((user) => ({
