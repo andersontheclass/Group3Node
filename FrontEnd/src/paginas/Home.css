@@ -1,0 +1,36 @@
+/* src/pages/Home.css */
+.home-container {
+  text-align: center;
+  padding: 300px;
+  background-image: url(https://www.shutterstock.com/image-vector/e-learning-education-online-digital-600nw-2434628001.jpg);
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+}
+
+p {
+  color: antiquewhite;
+}
+
+h4 {
+  color: antiquewhite;
+}
+
+.register-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+}
