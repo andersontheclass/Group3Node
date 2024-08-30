@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './profile.css'; // Asegúrate de que este archivo exista en la ruta correcta
-import { Button, Modal } from '@mui/material';
+import { Button, Modal, TextField } from '@mui/material';
 
 const Profile = () => {
   // Estado del componente
@@ -9,6 +9,7 @@ const Profile = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [action, setAction] = useState(null); // 'editProfile' o 'addBook'
   const [profileImage, setProfileImage] = useState(null); // Asegúrate de tener la lógica para manejar la imagen del perfil
+  const [userName, setUserName] = useState(''); // Estado para el nombre de usuario
   const [newBook, setNewBook] = useState({
     title: '',
     author: '',
@@ -16,6 +17,7 @@ const Profile = () => {
     genre: '',
     description: '',
   });
+  const [tempUserName, setTempUserName] = useState(''); // Estado para el nombre de usuario temporal durante la edición
 
   const handleSearch = () => {
     // Implementa la lógica de búsqueda si es necesario
@@ -38,7 +40,7 @@ const Profile = () => {
   };
 
   const handleEditProfile = () => {
-    // Implementa la lógica para editar el perfil si es necesario
+    setTempUserName(userName); // Inicializa el nombre temporal con el nombre actual
     openModal('editProfile');
   };
 
@@ -62,17 +64,33 @@ const Profile = () => {
     closeModal();
   };
 
+  // Función para simular el inicio de sesión
+  const handleLogin = (name) => {
+    setUserName(name); 
+  };
+
+  // Función para manejar la actualización del nombre de usuario en el perfil
+  const handleSaveProfile = () => {
+    handleLogin(tempUserName); 
+    closeModal();
+  };
+
   return (
     <div className="profile-page">
       <div className="top-bar">
         <div className="search-container">
-          <input
-            type="text"
-            placeholder="Buscar Libros"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button onClick={handleSearch}>Buscar</button>
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Buscar Libros"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button onClick={handleSearch}>
+              <span className="fas fa-search" aria-hidden="true"></span>
+              Buscar
+            </button>
+          </div>
         </div>
         <button className="form-button" onClick={() => openModal('addBook')}>
           Añadir Libro
@@ -84,10 +102,12 @@ const Profile = () => {
           <div className="profile-photo">
             <img src={profileImage || 'default-profile.png'} alt="Profile" />
           </div>
+          <h2>{userName}</h2>
           <button className="form-button-edit" onClick={handleEditProfile}>
             Editar Perfil
           </button>
         </div>
+
         <div className="profile-info">
           <h2>Tablero De Biblioteca</h2>
           <div className="books-list">
@@ -125,15 +145,30 @@ const Profile = () => {
           {action === 'editProfile' ? (
             <div className="modal-edit-profile">
               <h2>Editar Perfil</h2>
+              <TextField
+                label="Nombre de Usuario"
+                value={tempUserName}
+                onChange={(e) => setTempUserName(e.target.value)}
+                fullWidth
+                style={{ marginBottom: '10px' }}
+              />
               <input
                 type="file"
                 accept="image/jpeg"
                 onChange={handleImageUpload}
-                style={{ marginTop: '10px' }}
+                style={{ marginBottom: '10px' }}
               />
               <Button
                 variant="contained"
                 color="primary"
+                onClick={handleSaveProfile}
+                style={{ marginTop: '10px' }}
+              >
+                Guardar
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
                 onClick={closeModal}
                 style={{ marginTop: '10px' }}
               >
@@ -198,7 +233,7 @@ const Profile = () => {
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={closeModal}
                 style={{ marginTop: '10px' }}
               >
@@ -213,4 +248,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
