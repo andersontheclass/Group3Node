@@ -39,7 +39,7 @@ class Server {
   viewEngineConfiguration() {
     this.app.use('/', express.static(path.join(__dirname, 'FrontEnd/build')));
 
-    np
+    
     // this.app.engine('hbs', expressHandlebars.engine({
     //   defaultLayout: 'main',
     //   layoutsDir: path.join(__dirname, 'views', 'layouts'),

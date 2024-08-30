@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './profile.css'; // Asegúrate de que este archivo exista en la ruta correcta
+import './profile.css'; 
 import { Button, Modal, TextField } from '@mui/material';
 
 const Profile = () => {
@@ -7,9 +7,9 @@ const Profile = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [action, setAction] = useState(null); // 'editProfile' o 'addBook'
-  const [profileImage, setProfileImage] = useState(null); // Asegúrate de tener la lógica para manejar la imagen del perfil
-  const [userName, setUserName] = useState(''); // Estado para el nombre de usuario
+  const [action, setAction] = useState(null); 
+  const [profileImage, setProfileImage] = useState(null);
+  const [userName, setUserName] = useState(''); 
   const [newBook, setNewBook] = useState({
     title: '',
     author: '',
@@ -17,10 +17,9 @@ const Profile = () => {
     genre: '',
     description: '',
   });
-  const [tempUserName, setTempUserName] = useState(''); // Estado para el nombre de usuario temporal durante la edición
-
+  const [tempUserName, setTempUserName] = useState(''); 
   const handleSearch = () => {
-    // Implementa la lógica de búsqueda si es necesario
+    
   };
 
   const openModal = (actionType) => {
