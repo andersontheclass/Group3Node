@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const router = Router();
+const router = Router(); // Usar Router directamente
 
 const {
   retrieve,

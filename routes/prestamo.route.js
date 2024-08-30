@@ -1,6 +1,5 @@
 const { Router } = require("express");
-const router = Router();
-
+const router = Router(); 
 const {
   retrieve,
   retrieveById,
@@ -15,8 +14,8 @@ router.get("/:id", retrieveById);
 
 router.post("/", create);
 
-router.put("/", modify);
+router.put("/:id", modify); 
 
-router.delete("/", remove);
+router.delete("/:id", remove); 
 
 module.exports = router;
