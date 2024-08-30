@@ -2,6 +2,11 @@ const cors=require('cors');
 const express = require("express");
 const path = require('path');
 const expressHandlebars = require('express-handlebars');
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
+
 
 const usuarioRouter = require("./routes/usuario.route");
 const libroRouter = require("./routes/libro.route");
